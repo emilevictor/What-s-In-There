@@ -5,7 +5,8 @@ var coursesArray = null
 var soWittyIndex = 0;
 var soWitty = ['Now powered by magical <a href="http://www.uqrota.net">UQRota</a> dust!',
 				'Now with 10% less soylent green in every refec meal!',
-				'By Emile Victor, Michael Mallon & Alex Wilson']
+				'By Emile Victor, Michael Mallon & Alex Wilson',
+				'This is the result of procrastination']
 
 $(document).ready(function() {
 	$("#buildingRoomQuery").hide();
