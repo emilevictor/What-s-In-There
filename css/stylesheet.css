@@ -56,3 +56,19 @@ html, body {
 	text-align:center;
 	padding:5px;
 }
+
+#instructionMenu {
+	size:18pt;
+	width:400px;
+	margin:0px auto;
+	text-align:center;
+	padding:5px;
+}
+
+#information {
+	size:18pt;
+	width:400px;
+	margin:0px auto;
+	text-align:center;
+	padding:5px;
+}

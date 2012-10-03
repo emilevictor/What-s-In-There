@@ -6,7 +6,9 @@ var soWittyIndex = 0;
 var soWitty = ['Now powered by magical <a href="http://www.uqrota.net">UQRota</a> dust!',
 				'Now with 10% less soylent green in every refec meal!',
 				'By Emile Victor, Michael Mallon & Alex Wilson',
-				'This is the result of procrastination']
+				'This is the result of procrastination',
+				'More fun than si-net',
+				'Cheaper than Subway, less painful than a kick in the nuts']
 
 $(document).ready(function() {
 	$("#buildingRoomQuery").hide();
