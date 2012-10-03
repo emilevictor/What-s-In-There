@@ -131,8 +131,16 @@ $(document).ready(function() {
 			} else {
 				finishMinutes = coursesArray[i].finishDate.getMinutes().toString()
 			}
-			//$("#results").empty();
-			$("#results").append("<div class=\"indivClass\"><p class=\"className\">Class: "+coursesArray[i].course+"</p> <p class=\"day\">"+days[coursesArray[i].startDate.getDay()-1] + " | " + coursesArray[i].startDate.getHours().toString()+":"+startMinutes+" - "+coursesArray[i].finishDate.getHours().toString() + ":" + finishMinutes)
+			//Check if the next on the list is at the same time. If so, combine them.
+			if (((i+1) < coursesArray.length) && coursesArray[i+1].startDate.compareTo(coursesArray[i].startDate) == 0)
+			{
+				$("#results").append("<div class=\"indivClass\"><p class=\"className\">Class: "+coursesArray[i].course+" or "+coursesArray[i+1].course+"</p> <p class=\"day\">"+days[coursesArray[i].startDate.getDay()-1] + " | " + coursesArray[i].startDate.getHours().toString()+":"+startMinutes+" - "+coursesArray[i].finishDate.getHours().toString() + ":" + finishMinutes)
+				//Skip over
+				i++;
+			} else {
+				$("#results").append("<div class=\"indivClass\"><p class=\"className\">Class: "+coursesArray[i].course+"</p> <p class=\"day\">"+days[coursesArray[i].startDate.getDay()-1] + " | " + coursesArray[i].startDate.getHours().toString()+":"+startMinutes+" - "+coursesArray[i].finishDate.getHours().toString() + ":" + finishMinutes)
+
+			}
 		}
 		
 		if (coursesArray.length == 0)
@@ -145,6 +153,12 @@ $(document).ready(function() {
 
 
 
+
+	})
+
+	$("#header").click(function() {
+		$("#results").hide("slide", {direction: "up"},200);
+		$("#buildingRoomQuery").show("slide", {direction: "up"},200)
 
 	})
 
