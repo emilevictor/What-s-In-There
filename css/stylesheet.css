@@ -33,4 +33,21 @@
 	border-style: solid;
 	margin: 0px auto;
 	padding-top:20px;
+	padding:10px;
+}
+
+#header {
+	background-image:url('../images/header.jpg');
+	width:412px;
+	height:106px;
+	margin: 0px auto;
+}
+
+#lulzyMessage {
+	color:green;
+	size:18pt;
+	width:400px;
+	margin:0px auto;
+	text-align:center;
+	padding:5px;
 }
