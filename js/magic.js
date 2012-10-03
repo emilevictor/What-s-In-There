@@ -8,7 +8,7 @@ var soWitty = ['Now powered by magical <a href="http://www.uqrota.net">UQRota</a
 				'By Emile Victor, Michael Mallon & Alex Wilson',
 				'This is the result of procrastination',
 				'More fun than si-net',
-				'Cheaper than Subway, less painful than a kick in the nuts']
+				'More healthy than UQ Subway']
 
 $(document).ready(function() {
 	$("#buildingRoomQuery").hide();
