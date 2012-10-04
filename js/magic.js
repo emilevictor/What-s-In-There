@@ -9,6 +9,7 @@ var soWitty = ['Now powered by magical <a href="http://www.uqrota.net">UQRota</a
 				'This is the result of procrastination',
 				'More fun than si-net',
 				'More healthy than UQ Subway']
+var buildings = {}
 
 $(document).ready(function() {
 	$("#buildingRoomQuery").hide();
@@ -16,12 +17,43 @@ $(document).ready(function() {
 	$("#results").hide();
 	$("#header").hide();
 	$("#header").show("slide", {direction: "up"},200);
+
 	$("#lulzyMessage").hide();
 	soWittyIndex = Math.floor(Math.random()*soWitty.length);
 	$("#lulzyMessage").append(soWitty[soWittyIndex]);
 	setTimeout("showLulzyMessage()",500);
 	var timer = setInterval("showNextMessage()",15000);
 	$("#buildingRoomQuery").show("slide", {direction: "up"},200)
+
+
+	//We need to fetch the array of buildings from http://rota.eait.uq.edu.au/buildings.xml
+
+	$.ajax({
+			url:"http://rota.eait.uq.edu.au/buildings.xml",
+			dataType: 'text',
+			success:function(data){
+				xmlDoc = $.parseXML(data);
+				$xml = $(xmlDoc)
+				
+				$xml.find('building').each(function() {
+
+					//Currently restricted to St Lucia
+
+					if ($(this).find('campus code').text() == 'STLUC')
+					{
+						buildings[$(this).find('number').text()] = $(this).find('id').text()
+					}
+
+				});
+
+			},
+			error:function(){
+				alert("Error fetching buildings");
+				return
+			},
+			async: false
+		});
+
 
 
 	$("#selectRoom").click(function() {
@@ -48,20 +80,19 @@ $(document).ready(function() {
 		//Now we need to hit up rota to get the data we need.
 
 		$.ajax({
-			url:"http://rota.eait.uq.edu.au/building/"+roomSplit[0]+"/room/"+roomSplit[1]+"/sessions.xml",
+			url:"http://rota.eait.uq.edu.au/building/"+buildings[roomSplit[0]]+"/room/"+roomSplit[1]+"/sessions.xml",
 			dataType: 'text',
 			success:function(data){
 				// do stuff with json (in this case an array)
 				gRoomData = data;
 				//gRoomData = "<rss version='2.0'>" + gRoomData.toString + "</rss>"
-				console.log("I am doing f all")
 				xmlDoc = $.parseXML(gRoomData);
 				$xml = $(xmlDoc)
 				
 
 			},
 			error:function(){
-				alert("Error");
+				alert("Error fetching room contents");
 				return
 			},
 			async: false
