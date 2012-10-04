@@ -15,6 +15,8 @@ var buildingsIPSWC = {}
 var currentCampus = "STL"
 var buildings = {}
 var currentSemester = "6260" //Hardcoded: must be updated.
+var days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+var longDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 $(document).ready(function() {
 	$("#buildingRoomQuery").hide();
@@ -30,6 +32,14 @@ $(document).ready(function() {
 	var timer = setInterval("showNextMessage()",15000);
 	$("#buildingRoomQuery").show("slide", {direction: "up"},200)
 
+	var today = new Date().getDay()-1;
+	for (var i = 0; i < days.length; i++) {
+		if (today == i) {
+			$("#day").append('<option value="'+days[i]+'" selected="selected">'+longDays[i]+' (Today)</option>');
+		} else {
+			$("#day").append('<option value="'+days[i]+'">'+longDays[i]+'</option>');
+		}
+	}
 
 	//We need to fetch the array of buildings from http://rota.eait.uq.edu.au/buildings.xml
 
@@ -159,24 +169,24 @@ $(document).ready(function() {
 			async: false
 		});
 
+                /*
 		//Filter for today's date
 		var today = new Date();
 		dayIndex = today.getDay();
-
-		var days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
-
 		var todayShortDate = days[dayIndex-1]
-		console.log(todayShortDate)
+                */
+		var shortDate = $("#day").val();
+		console.log(shortDate)
 
 		var classes = []
 
 		$xml.find('session').each(function() {
 			console.log($(this).find('group series offering semester').text())
-			if ($(this).find('day').text() == todayShortDate && ($(this).find('group series offering semester').text() == currentSemester))
+			if ($(this).find('day').text() == shortDate && ($(this).find('group series offering semester').text() == currentSemester))
 			{
 				var classObject = {}
-				var startDate = Date.parse($(this).find('start').text());
-				var finishDate = Date.parse($(this).find('finish').text());
+				var startDate = Date.parse($(this).find('day').text() + ' ' + $(this).find('start').text());
+				var finishDate = Date.parse($(this).find('day').text() + ' ' + $(this).find('finish').text());
 
 				if (startDate == null || finishDate == null)
 				{
@@ -206,7 +216,7 @@ $(document).ready(function() {
 
 
 		$("#results").empty();
-		$("#results").append("<p class=\"warning\">Please note that the times shown on this page are taken directly from MySI-net... They may (and probably will) contain errors. These are the classes occurring in this room today.");
+		$("#results").append("<p class=\"warning\">Please note that the times shown on this page are taken directly from MySI-net... They may (and probably will) contain errors. These are the classes occurring in this room on " + longDays[days.indexOf(shortDate)] + ".");
 
 		for (var i = 0; i < coursesArray.length; i++)
 		{
