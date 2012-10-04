@@ -9,6 +9,10 @@ var soWitty = ['Now powered by magical <a href="http://www.uqrota.net">UQRota</a
 				'This is the result of procrastination',
 				'More fun than si-net',
 				'More healthy than UQ Subway']
+var buildingsSTL = {}
+var buildingsGATTN = {}
+var buildingsIPSWC = {}
+var currentCampus = "STL"
 var buildings = {}
 
 $(document).ready(function() {
@@ -28,6 +32,18 @@ $(document).ready(function() {
 
 	//We need to fetch the array of buildings from http://rota.eait.uq.edu.au/buildings.xml
 
+	$("#stlucia").click(function() {
+		currentCampus = "STL"
+	});
+
+	$("#ipswitch").click(function () {
+		currentCampus = "ipswitch"
+	})
+
+	$("#Gatton").click(function () {
+		currentCampus = "gatton"
+	})
+
 	$.ajax({
 			url:"http://rota.eait.uq.edu.au/buildings.xml",
 			dataType: 'text',
@@ -41,7 +57,14 @@ $(document).ready(function() {
 
 					if ($(this).find('campus code').text() == 'STLUC')
 					{
-						buildings[$(this).find('number').text()] = $(this).find('id').text()
+						buildingsSTL[$(this).find('number').text()] = $(this).find('id').text()
+					} else if ($(this).find('campus code').text() == 'GATTN')
+					{
+						buildingsGATTN[$(this).find('number').text()] = $(this).find('id').text()
+
+					} else if ($(this).find('campus code').text() == 'IPSWC')
+					{
+						buildingsIPSWC[$(this).find('number').text()] = $(this).find('id').text()
 					}
 
 				});
@@ -75,10 +98,21 @@ $(document).ready(function() {
 		}
 
 
+
+
 		//Hide the menu, show a spinner while we load.
 
 		//Now we need to hit up rota to get the data we need.
 
+		if (currentCampus == "STL")
+		{
+			buildings = buildingsSTL;
+		} else if (currentCampus == "ipswitch")
+		{
+			buildings = buildingsIPSWC;
+		} else if (currentCampus == "gatton") {
+			buildings = buildingsGATTN
+		}
 		$.ajax({
 			url:"http://rota.eait.uq.edu.au/building/"+buildings[roomSplit[0]]+"/room/"+roomSplit[1]+"/sessions.xml",
 			dataType: 'text',
@@ -92,7 +126,9 @@ $(document).ready(function() {
 
 			},
 			error:function(){
-				alert("Error fetching room contents");
+				$("#errorMessage").html("Yeah, I can't find that room anywhere...");
+				$("#errorMessage").show("slide", {direction: "up"},200);
+				var timer = setTimeout("hideErrorMessage()",5000);
 				return
 			},
 			async: false
