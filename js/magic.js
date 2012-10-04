@@ -14,6 +14,7 @@ var buildingsGATTN = {}
 var buildingsIPSWC = {}
 var currentCampus = "STL"
 var buildings = {}
+var currentSemester = "6260" //Hardcoded: must be updated.
 
 $(document).ready(function() {
 	$("#buildingRoomQuery").hide();
@@ -44,6 +45,31 @@ $(document).ready(function() {
 		currentCampus = "gatton"
 	})
 
+
+	//Get the current semester
+
+	// $.ajax({
+	// 		url:"http://rota.eait.uq.edu.au/semesters.xml",
+	// 		dataType: 'text',
+	// 		success:function(data){
+	// 			xmlDoc = $.parseXML(data);
+	// 			$xml = $(xmlDoc)
+				
+	// 			$xml.find('semester').each(function(){
+	// 				if($(this).attr('current')=='true') {
+	// 				   currentSemester = $(this).text();
+	// 				}
+
+	// 			});
+
+	// 		},
+	// 		error:function(){
+	// 			alert("Error fetching the current semester");
+	// 			return
+	// 		}
+	// 	});
+
+
 	$.ajax({
 			url:"http://rota.eait.uq.edu.au/buildings.xml",
 			dataType: 'text',
@@ -73,8 +99,7 @@ $(document).ready(function() {
 			error:function(){
 				alert("Error fetching buildings");
 				return
-			},
-			async: false
+			}
 		});
 
 
@@ -146,8 +171,8 @@ $(document).ready(function() {
 		var classes = []
 
 		$xml.find('session').each(function() {
-
-			if ($(this).find('day').text() == todayShortDate)
+			console.log($(this).find('group series offering semester').text())
+			if ($(this).find('day').text() == todayShortDate && ($(this).find('group series offering semester').text() == currentSemester))
 			{
 				var classObject = {}
 				var startDate = Date.parse($(this).find('start').text());
