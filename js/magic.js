@@ -23,6 +23,7 @@ $(document).ready(function() {
 	$("#errorMessage").hide();
 	$("#results").hide();
 	$("#header").hide();
+	$("#advanced").hide();
 	$("#header").show("slide", {direction: "up"},200);
 
 	$("#lulzyMessage").hide();
@@ -32,6 +33,7 @@ $(document).ready(function() {
 	setTimeout("showLulzyMessage()",500);
 	var timer = setInterval("showNextMessage()",15000);
 	
+	$("#buildingRoomQuery").show("slide", {direction: "up"},200)
 
 	var today = new Date().getDay()-1;
 	for (var i = 0; i < days.length; i++) {
@@ -279,6 +281,35 @@ $(document).ready(function() {
 
 
 
+	$("#toggleAdvanced").click(function() {
+		
+		if (currentCampus == "STL")
+		{
+			generateSelects("St Lucia");
+		} else if (currentCampus == "ipswitch")
+		{
+			generateSelects("Ipswich");
+		} else if (currentCampus == "gatton") {
+			generateSelects("Gatton");
+		}
+		$('#advanced').show("slide", {direction: "up"},200);
+	});
+
+	$("#buildingSelect").change(function () {
+		var i =$("#buildingSelect")[0].value;
+		if (i=="null") {
+			generateRoomSelect(i);
+		} else {
+			generateRoomSelect(buildingID[i]);
+		}
+	});
+
+	$("#roomSelect").change(function () {
+		var i = $("#buildingSelect")[0].value;
+		var j = $("#roomSelect")[0].value;
+		$('#roomName')[0].value=buildingNumber[i]+"-"+j;
+		$('#advanced').hide();
+	});
 
 
 
@@ -317,6 +348,7 @@ function showLoader()
 function showResults()
 {
 	$("#results").fadeIn('slow');
+	$("#buildingRoomQuery").hide("slide", {direction: "up"},200)
 }
 
 
