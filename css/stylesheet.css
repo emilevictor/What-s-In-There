@@ -28,6 +28,20 @@ html, body {
 	padding-top:20px;
 }
 
+#advanced
+{
+	width: 400px;
+	height:50px;
+	text-align:center;
+	border-radius:15px;
+	border-width:2px;
+	border-color:black;
+	border-style: solid;
+	margin: 0px auto;
+	color: red;
+	padding-top:20px;
+}
+
 #results
 {
 	width: 400px;
