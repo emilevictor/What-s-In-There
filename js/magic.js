@@ -8,7 +8,9 @@ var soWitty = ['Now powered by magical <a href="http://www.uqrota.net">UQRota</a
 				'By Emile Victor, Michael Mallon & Alex Wilson',
 				'This is the result of procrastination',
 				'More fun than si-net',
-				'More healthy than UQ Subway']
+				'More healthy than UQ Subway',
+				'From the makers of "ARGH! WHERE\'S MY CLASS?!"',
+				'ITEE students are the next generation of billionaires. Girls, you know what to do.']
 var buildingsSTL = {}
 var buildingsGATTN = {}
 var buildingsIPSWC = {}
