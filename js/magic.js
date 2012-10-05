@@ -136,7 +136,7 @@ $(document).ready(function() {
 
 	$("#selectRoom").click(function() {
 		showLoader();
-		$("#buildingRoomQuery").hide("slide", {direction: "up"},200)
+		$("#buildingRoomQuery").fadeOut('fast')
 
 		//showResults();
 		room = $("#roomName").val();
@@ -366,7 +366,6 @@ function showLoader()
 function showResults()
 {
 	$("#results").fadeIn('slow');
-	$("#buildingRoomQuery").hide("slide", {direction: "up"},200)
 }
 
 
