@@ -47,15 +47,24 @@ $(document).ready(function() {
 	//We need to fetch the array of buildings from http://rota.eait.uq.edu.au/buildings.xml
 
 	$("#stlucia").click(function() {
-		currentCampus = "STL"
+		currentCampus = "STL";
+		if ($('#advanced').is(':visible')) {
+			generateSelects("St Lucia");
+		}
 	});
 
 	$("#ipswitch").click(function () {
 		currentCampus = "ipswitch"
+		if ($('#advanced').is(':visible')) {
+			generateSelects("Ipswich");
+		}
 	})
 
 	$("#Gatton").click(function () {
 		currentCampus = "gatton"
+		if ($('#advanced').is(':visible')) {
+			generateSelects("Gatton");
+		}
 	})
 
 
