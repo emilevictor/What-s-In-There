@@ -125,6 +125,9 @@ $(document).ready(function() {
 			},
 			error:function(){
 				alert("Error fetching buildings");
+				$("#loader").fadeOut('slow', function() {
+					$("#buildingRoomQuery").show("slide", {direction: "up"},200);
+				});				
 				return
 			}
 		});
@@ -144,6 +147,9 @@ $(document).ready(function() {
 			$("#errorMessage").html("You need to put a hyphen between the building number and room number.");
 			$("#errorMessage").show("slide", {direction: "up"},200);
 			var timer = setTimeout("hideErrorMessage()",5000);
+			$("#loader").fadeOut('slow', function() {
+				$("#buildingRoomQuery").show("slide", {direction: "up"},200);
+			});			
 			return;
 		} else {
 			for (var i = 0; i < roomSplit.length; i++)
@@ -269,6 +275,9 @@ $(document).ready(function() {
 				$("#errorMessage").html("Yeah, I can't find that room anywhere...");
 				$("#errorMessage").show("slide", {direction: "up"},200);
 				var timer = setTimeout("hideErrorMessage()",5000);
+				$("#loader").fadeOut('slow', function() {
+					$("#buildingRoomQuery").show("slide", {direction: "up"},200);
+				});
 				return
 			}
 		});
