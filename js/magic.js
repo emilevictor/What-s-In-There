@@ -23,15 +23,15 @@ $(document).ready(function() {
 	$("#errorMessage").hide();
 	$("#results").hide();
 	$("#header").hide();
+	$("#advanced").hide();
 	$("#header").show("slide", {direction: "up"},200);
 
 	$("#lulzyMessage").hide();
-	showLoader();
 	soWittyIndex = Math.floor(Math.random()*soWitty.length);
 	$("#lulzyMessage").append(soWitty[soWittyIndex]);
 	setTimeout("showLulzyMessage()",500);
 	var timer = setInterval("showNextMessage()",15000);
-	
+	$("#buildingRoomQuery").show("slide", {direction: "up"},200)
 
 	var today = new Date().getDay()-1;
 	for (var i = 0; i < days.length; i++) {
@@ -106,11 +106,6 @@ $(document).ready(function() {
 
 				});
 
-				$("#loader").fadeOut('slow', function() {
-					$("#buildingRoomQuery").show("slide", {direction: "up"},200);
-				});
-
-
 			},
 			error:function(){
 				alert("Error fetching buildings");
@@ -121,10 +116,6 @@ $(document).ready(function() {
 
 
 	$("#selectRoom").click(function() {
-		showLoader();
-		$("#buildingRoomQuery").hide("slide", {direction: "up"},200)
-
-		//showResults();
 		room = $("#roomName").val();
 		roomSplit = room.split('-');
 
@@ -168,7 +159,18 @@ $(document).ready(function() {
 				xmlDoc = $.parseXML(gRoomData);
 				$xml = $(xmlDoc)
 				
-				        /*
+
+			},
+			error:function(){
+				$("#errorMessage").html("Yeah, I can't find that room anywhere...");
+				$("#errorMessage").show("slide", {direction: "up"},200);
+				var timer = setTimeout("hideErrorMessage()",5000);
+				return
+			},
+			async: false
+		});
+
+                /*
 		//Filter for today's date
 		var today = new Date();
 		dayIndex = today.getDay();
@@ -213,7 +215,7 @@ $(document).ready(function() {
 
 		coursesArray = classes
 
-		$("#loader").hide();
+
 		$("#results").empty();
 		$("#results").append("<p class=\"warning\">Please note that the times shown on this page are taken directly from MySI-net... They may (and probably will) contain errors. These are the classes occurring in this room on " + longDays[days.indexOf(shortDate)] + ".");
 
@@ -252,19 +254,7 @@ $(document).ready(function() {
 			$("#results").append("<iframe width=\"420\" height=\"315\" src=\"http://www.youtube.com/embed/4tiPOMd14eQ\" frameborder=\"0\" allowfullscreen></iframe>");
 		}
 
-		showResults();
-			},
-			error:function(){
-				$("#errorMessage").html("Yeah, I can't find that room anywhere...");
-				$("#errorMessage").show("slide", {direction: "up"},200);
-				var timer = setTimeout("hideErrorMessage()",5000);
-				return
-			}
-		});
-
-        
-		
-		
+		var timer = setTimeout("showResults()",200);
 
 
 
@@ -279,9 +269,35 @@ $(document).ready(function() {
 
 
 
+	$("#toggleAdvanced").click(function() {
+		
+		if (currentCampus == "STL")
+		{
+			generateSelects("St Lucia");
+		} else if (currentCampus == "ipswitch")
+		{
+			generateSelects("Ipswich");
+		} else if (currentCampus == "gatton") {
+			generateSelects("Gatton");
+		}
+		$('#advanced').show("slide", {direction: "up"},200);
+	});
 
+	$("#buildingSelect").change(function () {
+		var i =$("#buildingSelect")[0].value;
+		if (i=="null") {
+			generateRoomSelect(i);
+		} else {
+			generateRoomSelect(buildingID[i]);
+		}
+	});
 
-
+	$("#roomSelect").change(function () {
+		var i = $("#buildingSelect")[0].value;
+		var j = $("#roomSelect")[0].value;
+		$('#roomName')[0].value=buildingNumber[i]+"-"+j;
+		$('#advanced').hide();
+	});
 });
 
 function showLulzyMessage()
@@ -309,14 +325,10 @@ function showNextMessage()
 
 }
 
-function showLoader()
-{
-	$("#loader").fadeIn('slow');
-}
-
 function showResults()
 {
-	$("#results").fadeIn('slow');
+	$("#buildingRoomQuery").hide("slide", {direction: "up"},200)
+	$("#results").show("slide", {direction: "up"},1000);
 }
 
 
