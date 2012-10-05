@@ -53,8 +53,8 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#ipswitch").click(function () {
-		currentCampus = "ipswitch"
+	$("#ipswich").click(function () {
+		currentCampus = "ipswich"
 		if ($('#advanced').is(':visible')) {
 			generateSelects("Ipswich");
 		}
@@ -169,7 +169,7 @@ $(document).ready(function() {
 		if (currentCampus == "STL")
 		{
 			buildings = buildingsSTL;
-		} else if (currentCampus == "ipswitch")
+		} else if (currentCampus == "ipswich")
 		{
 			buildings = buildingsIPSWC;
 		} else if (currentCampus == "gatton") {
@@ -304,7 +304,7 @@ $(document).ready(function() {
 		if (currentCampus == "STL")
 		{
 			generateSelects("St Lucia");
-		} else if (currentCampus == "ipswitch")
+		} else if (currentCampus == "ipswich")
 		{
 			generateSelects("Ipswich");
 		} else if (currentCampus == "gatton") {
