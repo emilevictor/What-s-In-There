@@ -6,6 +6,8 @@
 	<link href='http://fonts.googleapis.com/css?family=Coda' rel='stylesheet' type='text/css'>
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/jquery-ui-1.8.24.custom.min.js"></script>
+	<script src="js/buildingdata.js"></script>
+	<script src="js/advancedmagic.js"></script>
 	<script src="js/magic.js"></script>
 	<LINK href="css/stylesheet.css" rel="stylesheet" type="text/css">
 
@@ -41,11 +43,12 @@
 		</select>
 		<button tabindex="6" id="selectRoom" value="Check room">Check room</button>
 
-
+		<button id="toggleAdvanced" value="Help me find my room">Help me find my room</button>
 
 	</div>
-	<div id="loader">
-		<br /><br /><br /><img src="images/ajax-loader.gif" />
+	<div id="advanced">
+		<select id="buildingSelect"></select><br/>
+		<select id="roomSelect"></select>
 	</div>
 	<div id="results">
 
