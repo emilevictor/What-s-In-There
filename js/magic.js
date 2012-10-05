@@ -33,7 +33,7 @@ $(document).ready(function() {
 	setTimeout("showLulzyMessage()",500);
 	var timer = setInterval("showNextMessage()",15000);
 	
-	$("#buildingRoomQuery").show("slide", {direction: "up"},200)
+	//$("#buildingRoomQuery").show("slide", {direction: "up"},200)
 
 	var today = new Date().getDay()-1;
 	for (var i = 0; i < days.length; i++) {
