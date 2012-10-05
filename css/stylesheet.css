@@ -73,3 +73,14 @@ html, body {
 	text-align:center;
 	padding:5px;
 }
+
+#loader {
+	color:green;
+	size:18pt;
+	width:400px;
+	margin:0px auto;
+	margin-top:30px;
+	margin-bottom:30px;
+	text-align:center;
+	padding:5px;
+}
