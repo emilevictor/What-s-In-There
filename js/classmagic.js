@@ -45,19 +45,6 @@ for (var i = 0; i < days.length; i++) {
 
 //We need to fetch the array of buildings from http://rota.eait.uq.edu.au/buildings.xml
 
-$("#stlucia").click(function() {
-	currentCampus = "STL"
-});
-
-$("#ipswitch").click(function () {
-	currentCampus = "ipswitch"
-})
-
-$("#Gatton").click(function () {
-	currentCampus = "gatton"
-})
-
-
 //Get the current semester
 
 // $.ajax({
@@ -90,7 +77,7 @@ $("#selectRoom").click(function() {
 
 	//Now we need to hit up rota to get the data we need.
 	$.ajax({
-		url:'http://rota.eait.uq.edu.au/offerings/find.xml?with={"course_code":"'+$('#roomName')[0].value+'","semester_id":"6260"}',
+		url:'http://rota.eait.uq.edu.au/offerings/find.xml?with={"course_code":"'+$('#roomName')[0].value.toUpperCase()+'","semester_id":"6260"}',
 		dataType: 'text',
 		success:function(data){
 			// do stuff with json (in this case an array)
@@ -132,6 +119,8 @@ $("#selectRoom").click(function() {
 						var bnum = $(this).find('number').text();
 						var camp = $(this).find('campus').text();
 						var rm = $(this).find('room').text();
+						var grp = $($(this).parent().parent().find("name")[0]).text();
+						var ctype = $($(this).parent().parent().parent().parent().find("name")[0]).text();
 						if (camp == 'STLUC') {
 							camp = "St Lucia";
 						} else if (camp =='GATTN') {
@@ -140,8 +129,8 @@ $("#selectRoom").click(function() {
 							camp="Ipswich";
 						}
 						if ($('#day').val() == d) {
-							$('#results').append('<p class="className">'+camp+':  '+st+'-'+fn+'</p>');
-							$('#results').append('<p class="day">'+bnum+' ('+bname+'), Room '+rm+'</p>');
+							$('#results').append('<p class="className">'+ctype+grp+'&nbsp;&nbsp;'+st+'-'+fn+' ('+camp+')</p>');
+							$('#results').append('<p class="day">'+bnum+' ('+bname+'), Room '+rm+'</p><br/>');
 						}
 					});
 					if ($('#results').text()=="") {
