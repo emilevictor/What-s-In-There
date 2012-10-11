@@ -2,6 +2,22 @@ html, body {
 	font-family: 'Coda', cursive;
 }
 
+span.link {
+	
+	text-align:center;
+	color: #FFFFFF;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:15px;
+	padding-right:15px;
+	border-radius:5px;
+	border-width:0px;
+	border-color: #3BB9FF;
+	background-color: #3BB9FF;
+	border-style: solid;
+	margin: 7px auto;
+	cursor:pointer;
+}
 
 #buildingRoomQuery {
 	width: 400px;
@@ -33,11 +49,11 @@ html, body {
 	width: 400px;
 	height:50px;
 	text-align:center;
-	border-radius:15px;
+	border-radius:8px;
 	border-width:2px;
 	border-color:black;
 	border-style: solid;
-	margin: 0px auto;
+	margin: 7px auto;
 	color: red;
 	padding-top:20px;
 }
@@ -74,7 +90,7 @@ html, body {
 #instructionMenu {
 	size:18pt;
 	width:400px;
-	margin:0px auto;
+	margin:2px auto;
 	text-align:center;
 	padding:5px;
 	text-align:center;
