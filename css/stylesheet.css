@@ -264,3 +264,133 @@
 		padding:5px;
 	}
 }
+
+
+@media only screen and (min-device-width : 720px) and (-webkit-min-device-pixel-ratio : 2) { 
+
+
+
+	html, body {
+	font-family: 'Coda', cursive;
+	width:100%;
+	margin:0px;
+	padding:0px;
+	}
+
+	.gitHubBanner {
+		visibility:hidden;
+		display:none;
+	}
+
+	span.link {
+		
+		text-align:center;
+		color: #FFFFFF;
+		padding-top:3px;
+		padding-bottom:3px;
+		padding-left:15px;
+		padding-right:15px;
+		border-radius:5px;
+		border-width:0px;
+		border-color: #006600;
+		background-color: #006600;
+		border-style: solid;
+		margin: 7px auto;
+		cursor:pointer;
+	}
+
+	#buildingRoomQuery {
+		width: 100%;
+		text-align:center;
+		margin: 0px auto;
+	}
+
+	#errorMessage
+	{
+		width: 100%;
+		height:50px;
+		text-align:center;
+		border-radius:15px;
+		border-width:2px;
+		border-color:black;
+		border-style: solid;
+		margin: 0px auto;
+		color: red;
+		padding-top:20px;
+	}
+
+	#advanced
+	{
+		width: 100%;
+		height:50px;
+		text-align:center;
+		margin: 7px auto;
+		color: red;
+		padding-top:20px;
+	}
+
+	#results
+	{
+		width: 100%;
+		text-align:center;
+		margin: 0px auto;
+		padding-top:20px;
+		padding:4px;
+	}
+
+	#header {
+		background-image:url('../images/headerMobile.jpg');
+		x-repeat:none;
+		width:250px;
+		height:64px;
+		margin: 0px auto;
+	}
+
+	#desktopAd {
+		visibility:hidden;
+		display:none;
+	}
+
+	#mobileAd {
+		display:block;
+		margin:0px;
+	}
+
+	#lulzyMessage {
+		color:green;
+		size:18pt;
+		width:100%;
+		margin:0px auto;
+		text-align:center;
+		padding:5px;
+	}
+
+	#instructionMenu {
+		size:18pt;
+		width:100%;
+		text-align:center;
+		padding:5px;
+	}
+
+	#information {
+		size:12pt;
+		width:100%;
+		margin:0px auto;
+		text-align:center;
+		
+	}
+
+	#loader {
+		color:green;
+		size:18pt;
+		width:100%;
+		margin:0px auto;
+		margin-top:30px;
+		margin-bottom:30px;
+		text-align:center;
+		padding:5px;
+	}
+
+
+
+};
