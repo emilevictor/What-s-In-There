@@ -21,6 +21,9 @@ var days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
 var longDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 $(document).ready(function() {
+	//Get rid of the address bar on iPhone
+	$('body').scrollTop(1);
+
 	$("#buildingRoomQuery").hide();
 	$("#errorMessage").hide();
 	$("#results").hide();

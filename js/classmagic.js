@@ -19,6 +19,8 @@ var days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
 var longDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 $(document).ready(function() {
+	$('body').scrollTop(1);
+	
 	$("#buildingRoomQuery").hide();
 	$("#errorMessage").hide();
 	$("#results").hide();
