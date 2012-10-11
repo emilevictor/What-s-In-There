@@ -68,6 +68,11 @@ for (var i = 0; i < days.length; i++) {
 // 		}
 // 	});
 
+$('#roomName').keyup(function(event) {
+	if(event.keyCode == 13) {
+		$('#selectRoom').click();
+	}
+});
 
 $("#selectRoom").click(function() {
 	showLoader();

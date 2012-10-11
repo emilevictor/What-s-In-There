@@ -299,6 +299,12 @@ $(document).ready(function() {
 
 	})
 
+	$('#roomName').keyup(function(event) {
+	        if(event.keyCode == 13) {
+	                $('#selectRoom').click();
+	        }
+	});
+
 
 
 	$("#toggleAdvanced").click(function() {
