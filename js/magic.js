@@ -126,6 +126,10 @@ $(document).ready(function() {
 					$("#buildingRoomQuery").show("slide", {direction: "up"},200);
 				});
 
+				var urlEncoded = urlParams();
+				if (urlEncoded.urlencoded) {
+					useURLEncoded(urlEncoded);
+				}
 
 			},
 			error:function(){
