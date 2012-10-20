@@ -9,6 +9,7 @@ function urlParams() {
 	var haveB = false;
 	var haveR = false;
 	var haveC = false;
+	result.day=null;
 	for (var i=0; i<v.length; i+=1) {
 		var spltv = v[i].split("=");
 		if (spltv.length != 2) {
@@ -23,6 +24,8 @@ function urlParams() {
 		} else if (spltv[0]=="r") {
 			result.room = spltv[1];
 			haveR = true;
+		} else if (spltv[0]=="d") {
+			result.day = spltv[1];
 		}
 	}
 
@@ -44,7 +47,9 @@ function useURLEncoded(v) {
 	} else {
 		return;
 	}
-	//$('#day').val("Mon")
+	if ($.inArray(v.day,days) >= 0 ) {
+		$('#day').val(v.day)
+	}
 	$("#roomName").val(v.building+"-"+v.room);
 	setTimeout('$("#selectRoom").click()',1000)
 }
