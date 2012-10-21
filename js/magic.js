@@ -223,6 +223,10 @@ $(document).ready(function () {
     });
 
 
+				var urlEncoded = urlParams();
+				if (urlEncoded.urlencoded) {
+					useURLEncoded(urlEncoded);
+				}
 
 });
 
