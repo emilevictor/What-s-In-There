@@ -114,9 +114,7 @@ $(document).ready(function () {
 		        roomSplit.push(getUrlVars()["r"]);
 
 		        //This does not take into consideration the campus, must be changed.
-				$("#loader").fadeOut('slow', function () {
-					calculateRoomResults(roomSplit, getUrlVars()["c"]);
-				});
+                 calculateRoomResults(roomSplit, getUrlVars()["c"]);
 		        
 		    } else {
             	$("#loader").fadeOut('slow', function () {
