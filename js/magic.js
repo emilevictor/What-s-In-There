@@ -3,7 +3,7 @@ var $xml = null
 var xmlDoc = null
 var coursesArray = null
 var soWittyIndex = 0;
-var soWitty = ['Now powered by magical <a href="http://www.uqrota.net">UQRota</a> dust!', 'Now with 10% less soylent green in every refec meal!', 'By Emile Victor, Michael Mallon & Alex Wilson', 'This is the result of procrastination', 'More fun than si-net', 'More healthy than UQ Subway', 'From the makers of "ARGH! WHERE\'S MY CLASS?!"', 'ITEE students are the next generation of billionaires. Girls, you know what to do.']
+var soWitty = ['Now powered by magical <a href="http://www.uqrota.net">UQRota</a> dust!', 'Now with 10% less soylent green in every refec meal!', 'By Emile Victor, Michael Mallon & Alex Wilson', 'This is the result of procrastination', 'More fun than si-net', 'More healthy than UQ Subway', 'From the makers of "ARGH! WHERE\'S MY CLASS?!"']
 var buildingsSTL = {}
 var buildingsGATTN = {}
 var buildingsIPSWC = {}
