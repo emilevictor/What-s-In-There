@@ -9,7 +9,7 @@ var buildingsGATTN = {}
 var buildingsIPSWC = {}
 var currentCampus = "STL"
 var buildings = {}
-var currentSemester = "6280" //Hardcoded: must be updated. Current: summer semester, next is 6310.
+var currentSemester = "6320" //Hardcoded: must be updated. :( Current: 2013 semester 1, next is 6360.
 var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 var longDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
