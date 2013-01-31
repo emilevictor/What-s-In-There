@@ -9,7 +9,7 @@ var buildingsGATTN = {}
 var buildingsIPSWC = {}
 var currentCampus = "STL"
 var buildings = {}
-var currentSemester = "6330" //Hardcoded: must be updated. Current: summer semester, next is 6310.
+var currentSemester = "6220" //Hardcoded: must be updated. Current: summer semester, next is 6310.
 var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 var longDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
@@ -275,8 +275,8 @@ function calculateRoomResults(roomSplit,campus)
                 var classes = []
 
                 $xml.find('session').each(function () {
-                    console.log($(this).find('group series offering semester').text())
-                    if ($(this).find('day').text() == shortDate && ($(this).find('group series offering semester').text() == currentSemester)) {
+                    console.log($(this).find('group series offering semester id').text())
+                    if ($(this).find('day').text() == shortDate && ($(this).find('group series offering semester id').text() == currentSemester)) {
                         var classObject = {}
                         var startDate = Date.parse($(this).find('day').text() + ' ' + $(this).find('start').text());
                         var finishDate = Date.parse($(this).find('day').text() + ' ' + $(this).find('finish').text());
