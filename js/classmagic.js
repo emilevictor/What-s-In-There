@@ -9,7 +9,7 @@ var buildingsGATTN = {}
 var buildingsIPSWC = {}
 var currentCampus = "STL"
 var buildings = {}
-var currentSemester = "6260" //Hardcoded: must be updated.
+var currentSemester = "6220" //Hardcoded: must be updated.
 var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 var longDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
@@ -85,7 +85,7 @@ $(document).ready(function () {
 
         //Now we need to hit up rota to get the data we need.
         $.ajax({
-            url: 'http://rota.eait.uq.edu.au/offerings/find.xml?with={"course_code":"' + $('#roomName')[0].value.toUpperCase() + '","semester_id":"6260"}',
+            url: 'http://rota.eait.uq.edu.au/offerings/find.xml?with={"course_code":"' + $('#roomName')[0].value.toUpperCase() + '","semester_id":'+currentSemester+'}',
             dataType: 'text',
             success: function (data) {
                 // do stuff with json (in this case an array)
